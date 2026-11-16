@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cours_dart/coffee_prefs.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -7,28 +8,63 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cours Dart'),
+        title: const Text(
+          'Mon Cafe Prefere',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
         backgroundColor: Colors.brown[700],
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Container(
-            color: Colors.brown[200],
-            padding: EdgeInsets.all(20),
-            child: Text("How I like my coffee"),
-          ),
-          Container(
-            color: Colors.brown[300],
-            padding: EdgeInsets.all(20),
-            child: Text("coffee prefs"),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Banniere de presentation
+            Container(
+              color: Colors.brown[200],
+              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+              child: const Text(
+                'Configurez votre tasse ideale selon vos gouts',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.brown,
+                ),
+              ),
+            ),
+
+            // Carte interactive de preferences
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Vos Preferences',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.brown[900],
+                        ),
+                      ),
+                      const Divider(height: 24),
+                      const CoffeePrefs(),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
-
-// a contaier is a widget that allows us to create a box with a specific size, color, and other properties. It can also contain other widgets, making it a versatile building block for our UI. In this example, we have created a container with an orange background color and a text widget that says "Hello Maxime".
-// by default if container does not have a size, it will take up as much space as possible. In this case, the container will fill the entire body of the Scaffold, which is the area below the AppBar. The text widget will be centered within the container by default.
-// but if there is a child widget inside the container, the container will take the size of the child widget. In this case, the container will take the size of the text widget, which is determined by the length of the text and the font size. The container will then be centered within the body of the Scaffold.
